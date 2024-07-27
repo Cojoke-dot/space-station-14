@@ -38,7 +38,7 @@ public sealed class ResistLockerSystem : EntitySystem
         var ev = new ContainerEscapeAttemptEvent();
         RaiseLocalEvent(args.Entity, ev);
         if(ev.Cancelled)
-	  return;
+	        return;
 
         if (TryComp<LockComponent>(uid, out var lockComponent) && lockComponent.Locked || _weldable.IsWelded(uid))
         {
