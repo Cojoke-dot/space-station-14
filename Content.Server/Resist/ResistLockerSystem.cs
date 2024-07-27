@@ -6,10 +6,9 @@ using Content.Shared.Lock;
 using Content.Shared.Movement.Events;
 using Content.Shared.Popups;
 using Content.Shared.Resist;
+using Content.Shared.Storage;
 using Content.Shared.Tools.Components;
 using Content.Shared.Tools.Systems;
-using Content.Shared.Standing;
-using Content.Shared.Cuffs.Components;
 
 namespace Content.Server.Resist;
 
@@ -36,13 +35,10 @@ public sealed class ResistLockerSystem : EntitySystem
         if (!TryComp(uid, out EntityStorageComponent? storageComponent))
             return;
 
-        if (TryComp<StandingStateComponent>(args.Entity, out var standing) &&
-            !standing.Standing)
-            return;
-
-        if (TryComp<CuffableComponent>(args.Entity, out var cuffable) &&
-            !cuffable.CanStillInteract)
-            return;
+        var ev = new ContainerEscapeAttemptEvent();
+        RaiseLocalEvent(args.Entity, ev);
+        if(ev.Cancelled)
+	  return;
 
         if (TryComp<LockComponent>(uid, out var lockComponent) && lockComponent.Locked || _weldable.IsWelded(uid))
         {

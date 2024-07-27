@@ -1,6 +1,7 @@
 using Content.Shared.Hands.Components;
 using Content.Shared.Physics;
 using Content.Shared.Rotation;
+using Content.Shared.Storage;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Physics;
@@ -16,6 +17,19 @@ namespace Content.Shared.Standing
 
         // If StandingCollisionLayer value is ever changed to more than one layer, the logic needs to be edited.
         private const int StandingCollisionLayer = (int) CollisionGroup.MidImpassable;
+
+        public override void Initialize()
+        {
+          base.Initialize();
+
+          SubscribeLocalEvent<StandingStateComponent, ContainerEscapeAttemptEvent>(OnContainerEscapeAttempt);
+        }
+
+        private void OnContainerEscapeAttempt(EntityUid uid, StandingStateComponent component, ContainerEscapeAttemptEvent args)
+        {
+          if(!component.Standing)
+              args.Cancel();
+        }
 
         public bool IsDown(EntityUid uid, StandingStateComponent? standingState = null)
         {

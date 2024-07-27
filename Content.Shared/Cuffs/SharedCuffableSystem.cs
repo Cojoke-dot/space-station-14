@@ -23,6 +23,7 @@ using Content.Shared.Popups;
 using Content.Shared.Pulling.Events;
 using Content.Shared.Rejuvenate;
 using Content.Shared.Stunnable;
+using Content.Shared.Storage;
 using Content.Shared.Timing;
 using Content.Shared.Verbs;
 using Content.Shared.Weapons.Melee.Events;
@@ -86,6 +87,15 @@ namespace Content.Shared.Cuffs
             SubscribeLocalEvent<HandcuffComponent, MeleeHitEvent>(OnCuffMeleeHit);
             SubscribeLocalEvent<HandcuffComponent, AddCuffDoAfterEvent>(OnAddCuffDoAfter);
             SubscribeLocalEvent<HandcuffComponent, VirtualItemDeletedEvent>(OnCuffVirtualItemDeleted);
+
+            SubscribeLocalEvent<CuffableComponent, ContainerEscapeAttemptEvent>(OnContainerEscapeAttempt);
+        }
+
+        private void OnContainerEscapeAttempt(EntityUid uid, CuffableComponent component, ContainerEscapeAttemptEvent args)
+        {
+          if(!component.CanStillInteract)
+              args.Cancel();
+
         }
 
         private void CheckInteract(Entity<CuffableComponent> ent, ref InteractionAttemptEvent args)

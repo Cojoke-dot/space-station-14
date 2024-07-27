@@ -2,7 +2,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Numerics;
 using Content.Shared.Body.Components;
-using Content.Shared.Cuffs.Components;
 using Content.Shared.Destructible;
 using Content.Shared.Foldable;
 using Content.Shared.Hands.Components;
@@ -13,6 +12,7 @@ using Content.Shared.Movement.Events;
 using Content.Shared.Placeable;
 using Content.Shared.Popups;
 using Content.Shared.Standing;
+using Content.Shared.Storage;
 using Content.Shared.Storage.Components;
 using Content.Shared.Tools.Systems;
 using Content.Shared.Verbs;
@@ -134,12 +134,9 @@ public abstract class SharedEntityStorageSystem : EntitySystem
         if (!HasComp<HandsComponent>(args.Entity))
             return;
 
-        if (TryComp<StandingStateComponent>(args.Entity, out var standing) &&
-            !standing.Standing)
-            return;
-
-        if (TryComp<CuffableComponent>(args.Entity, out var cuffable) &&
-            !cuffable.CanStillInteract)
+        var ev = new ContainerEscapeAttemptEvent();
+        RaiseLocalEvent(args.Entity,ev);
+        if(ev.Cancelled)
             return;
 
         if (_timing.CurTime < component.NextInternalOpenAttempt)
