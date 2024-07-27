@@ -11,7 +11,6 @@ using Content.Shared.Lock;
 using Content.Shared.Movement.Events;
 using Content.Shared.Placeable;
 using Content.Shared.Popups;
-using Content.Shared.Standing;
 using Content.Shared.Storage;
 using Content.Shared.Storage.Components;
 using Content.Shared.Tools.Systems;
@@ -135,7 +134,7 @@ public abstract class SharedEntityStorageSystem : EntitySystem
             return;
 
         var ev = new ContainerEscapeAttemptEvent();
-        RaiseLocalEvent(args.Entity,ev);
+        RaiseLocalEvent(args.Entity, ev);
         if(ev.Cancelled)
             return;
 

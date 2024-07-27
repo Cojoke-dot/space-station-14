@@ -21,4 +21,8 @@ public sealed partial class AreaPickupDoAfterEvent : DoAfterEvent
     public override DoAfterEvent Clone() => this;
 }
 
+/// <summary>
+/// Used to check if a player should not be allowed to escape a container.( while handcuffed, asleep,..etc)
+/// </summary>
+/// 
 public sealed class ContainerEscapeAttemptEvent : CancellableEntityEventArgs;
