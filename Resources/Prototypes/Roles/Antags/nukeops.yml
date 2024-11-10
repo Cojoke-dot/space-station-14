@@ -8,6 +8,9 @@
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 18000 # 5h
+  - !type:DepartmentTimeRequirement
+    department: Security
+    time: 18000 # 5h
   guides: [ NuclearOperatives ]
 
 - type: antag
@@ -35,10 +38,9 @@
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 18000 # 5h
-  - !type:DepartmentTimeRequirement
-    department: Security
-    time: 18000 # 5h
-  # should be changed to nukie playtime when thats tracked (wyci)
+  - !type:RoleTimeRequirement
+    role: AntagNuclearOperative
+    time: 1800 # 30 minutes, about the average preptime for nukies
   guides: [ NuclearOperatives ]
 
 - type: startingGear
