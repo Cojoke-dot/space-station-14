@@ -3,6 +3,7 @@
   name: roles-antag-rev-head-name
   antagonist: true
   setPreference: true
+  playTimeTracker: AntagHeadRevolutionary
   objective: roles-antag-rev-head-objective
   guides: [ Revolutionaries ]
   requirements:
@@ -14,6 +15,7 @@
   name: roles-antag-rev-name
   antagonist: true
   setPreference: false
+  playTimeTracker: AntagRevolutionary
   objective: roles-antag-rev-objective
   guides: [ Revolutionaries ]
 

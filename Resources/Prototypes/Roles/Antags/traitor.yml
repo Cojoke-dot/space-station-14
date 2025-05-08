@@ -3,6 +3,7 @@
   name: roles-antag-syndicate-agent-name
   antagonist: true
   setPreference: true
+  playTimeTracker: AntagSyndicateAgent
   objective: roles-antag-syndicate-agent-objective
   guides: [ Traitors ]
   requirements:
@@ -14,6 +15,7 @@
   name: roles-antag-syndicate-agent-sleeper-name
   antagonist: true
   setPreference: true
+  playTimeTracker: AntagSyndicateSleeperAgent
   objective: roles-antag-syndicate-agent-sleeper-objective
   guides: [ Traitors ]
   requirements:
