@@ -2,6 +2,7 @@
   id: Survivor
   name: roles-antag-survivor-name
   antagonist: true
+  playTimeTracker: AntagSurvivor
   objective: roles-antag-survivor-objective
   # guides: [  ]
 

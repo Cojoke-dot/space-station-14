@@ -200,3 +200,18 @@
 
 - type: playTimeTracker
   id: AntagWizard
+
+- type: playTimeTracker
+  id: AntagSoloAntagonist
+
+- type: playTimeTracker
+  id: AntagFreeAgent
+
+- type: playTimeTracker
+  id: AntagTeamAntagonist
+
+- type: playTimeTracker
+  id: AntagSiliconAntagonist
+
+- type: playTimeTracker
+  id: AntagSurvivor
