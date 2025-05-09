@@ -1,6 +1,5 @@
 using Content.Shared.Access;
 using Content.Shared.Guidebook;
-using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.StatusIcon;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
@@ -11,15 +10,8 @@ namespace Content.Shared.Roles
     ///     Describes information for a single job on the station.
     /// </summary>
     [Prototype]
-    public sealed partial class JobPrototype : IPrototype
+    public sealed partial class JobPrototype : RolePrototype
     {
-        [ViewVariables]
-        [IdDataField]
-        public string ID { get; private set; } = default!;
-
-        [DataField("playTimeTracker", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<PlayTimeTrackerPrototype>))]
-        public string PlayTimeTracker { get; private set; } = string.Empty;
-
         /// <summary>
         ///     Who is the supervisor for this job.
         /// </summary>
@@ -29,26 +21,11 @@ namespace Content.Shared.Roles
         /// <summary>
         ///     The name of this job as displayed to players.
         /// </summary>
-        [DataField("name")]
-        public string Name { get; private set; } = string.Empty;
-
-        [ViewVariables(VVAccess.ReadOnly)]
-        public string LocalizedName => Loc.GetString(Name);
-
-        /// <summary>
-        ///     The name of this job as displayed to players.
-        /// </summary>
         [DataField("description")]
         public string? Description { get; private set; }
 
         [ViewVariables(VVAccess.ReadOnly)]
         public string? LocalizedDescription => Description is null ? null : Loc.GetString(Description);
-
-        /// <summary>
-        ///     Requirements for the job.
-        /// </summary>
-        [DataField, Access(typeof(SharedRoleSystem), Other = AccessPermissions.None)]
-        public HashSet<JobRequirement>? Requirements;
 
         /// <summary>
         ///     When true - the station will have anouncement about arrival of this player.

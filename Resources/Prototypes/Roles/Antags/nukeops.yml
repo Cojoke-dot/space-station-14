@@ -35,10 +35,9 @@
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 18000 # 5h
-  - !type:DepartmentTimeRequirement
-    department: Security
-    time: 18000 # 5h
-  # should be changed to nukie playtime when thats tracked (wyci)
+  - !type:RoleTimeRequirement
+    role: AntagNuclearOperative
+    time: 1800 # 30min, about one round
   guides: [ NuclearOperatives ]
 
 - type: startingGear

@@ -9,24 +9,8 @@ namespace Content.Shared.Roles;
 /// </summary>
 [Prototype]
 [Serializable, NetSerializable]
-public sealed partial class AntagPrototype : IPrototype
+public sealed partial class AntagPrototype : RolePrototype
 {
-    [ViewVariables]
-    [IdDataField]
-    public string ID { get; private set; } = default!;
-
-    /// <summary>
-    ///     The name of this antag as displayed to players.
-    /// </summary>
-    [DataField("name")]
-    public string Name { get; private set; } = "";
-
-    /// <summary>
-    ///     The playtime that will be tracked while this antag.
-    /// </summary>
-    [DataField("playTimeTracker", required: true)]
-    public string PlayTimeTracker { get; private set; } = string.Empty;
-
     /// <summary>
     ///     The antag's objective, shown in a tooltip in the antag preference menu or as a ghost role description.
     /// </summary>
@@ -44,14 +28,6 @@ public sealed partial class AntagPrototype : IPrototype
     /// </summary>
     [DataField("setPreference")]
     public bool SetPreference { get; private set; }
-
-    /// <summary>
-    ///     Requirements that must be met to opt in to this antag role.
-    /// </summary>
-    // TODO ROLE TIMERS
-    // Actually check if the requirements are met. Because apparently this is actually unused.
-    [DataField, Access(typeof(SharedRoleSystem), Other = AccessPermissions.None)]
-    public HashSet<JobRequirement>? Requirements;
 
     /// <summary>
     /// Optional list of guides associated with this antag. If the guides are opened, the first entry in this list
