@@ -4,6 +4,7 @@
   antagonist: true
   setPreference: true
   playTimeTracker: AntagThief
+  color: '#746694'
   objective: roles-antag-thief-objective
   guides: [ Thieves ]
   requirements:

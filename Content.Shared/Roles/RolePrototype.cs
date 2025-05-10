@@ -32,4 +32,10 @@ public abstract partial class RolePrototype : IPrototype
     /// </summary>
     [DataField, Access(typeof(SharedRoleSystem), Other = AccessPermissions.None)]
     public HashSet<JobRequirement>? Requirements;
+
+    /// <summary>
+    ///     Color displayed for the role. Takes precedent over department color
+    /// </summary>
+    [DataField]
+    public Color? Color;
 }

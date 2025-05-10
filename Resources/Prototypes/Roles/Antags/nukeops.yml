@@ -4,6 +4,7 @@
   antagonist: true
   setPreference: true
   playTimeTracker: AntagNuclearOperative
+  color: 'crimson'
   objective: roles-antag-nuclear-operative-objective
   requirements:
   - !type:OverallPlaytimeRequirement
@@ -16,6 +17,7 @@
   antagonist: true
   setPreference: true
   playTimeTracker: AntagNuclearAgent
+  color: 'crimson'
   objective: roles-antag-nuclear-operative-agent-objective
   requirements:
   - !type:OverallPlaytimeRequirement
@@ -31,13 +33,17 @@
   antagonist: true
   setPreference: true
   playTimeTracker: AntagNuclearCommander
+  color: 'crimson'
   objective: roles-antag-nuclear-operative-commander-objective
   requirements:
   - !type:OverallPlaytimeRequirement
     time: 18000 # 5h
-  - !type:RoleTimeRequirement
-    role: AntagNuclearOperative
-    time: 1800 # 30min, about one round
+  - !type:DepartmentTimeRequirement
+    department: Security
+    time: 18000 # 5 hrs
+#  - !type:RoleTimeRequirement # commented out now, add later on when tracking has been in for a bit
+#    role: AntagNuclearOperative
+#    time: 1800 # 30min, about one round
   guides: [ NuclearOperatives ]
 
 - type: startingGear

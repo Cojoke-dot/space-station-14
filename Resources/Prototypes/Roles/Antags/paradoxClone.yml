@@ -3,6 +3,7 @@
   name: roles-antag-paradox-clone-name
   antagonist: true
   playTimeTracker: AntagParadoxClone
+  color: 'white'
   objective: roles-antag-paradox-clone-objective
   setPreference: false
 

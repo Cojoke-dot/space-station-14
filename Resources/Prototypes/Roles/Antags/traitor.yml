@@ -4,6 +4,7 @@
   antagonist: true
   setPreference: true
   playTimeTracker: AntagSyndicateAgent
+  color: 'crimson'
   objective: roles-antag-syndicate-agent-objective
   guides: [ Traitors ]
   requirements:
@@ -16,6 +17,7 @@
   antagonist: true
   setPreference: true
   playTimeTracker: AntagSyndicateSleeperAgent
+  color: 'crimson'
   objective: roles-antag-syndicate-agent-sleeper-objective
   guides: [ Traitors ]
   requirements:

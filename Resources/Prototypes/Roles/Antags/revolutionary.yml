@@ -4,6 +4,7 @@
   antagonist: true
   setPreference: true
   playTimeTracker: AntagHeadRevolutionary
+  color: '5e9cff'
   objective: roles-antag-rev-head-objective
   guides: [ Revolutionaries ]
   requirements:
@@ -16,6 +17,7 @@
   antagonist: true
   setPreference: false
   playTimeTracker: AntagRevolutionary
+  color: '5e9cff'
   objective: roles-antag-rev-objective
   guides: [ Revolutionaries ]
 

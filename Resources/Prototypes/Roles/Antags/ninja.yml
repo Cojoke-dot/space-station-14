@@ -4,6 +4,7 @@
   antagonist: true
   setPreference: false
   playTimeTracker: AntagNinja
+  color: '#33cc00'
   objective: roles-antag-space-ninja-objective
   guides: [ SpaceNinja ]
 

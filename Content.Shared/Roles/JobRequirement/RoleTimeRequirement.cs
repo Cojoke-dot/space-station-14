@@ -38,16 +38,12 @@ public sealed partial class RoleTimeRequirement : JobRequirement
         var roleDiffSpan = Time - roleTime;
         var roleDiff = roleDiffSpan.TotalMinutes;
         var formattedRoleDiff = ContentLocalizationManager.FormatPlaytime(roleDiffSpan);
-        var departmentColor = Color.Yellow;
+        var roleColor = Color.Yellow;
 
         if (!entManager.EntitySysManager.TryGetEntitySystem(out SharedJobSystem? jobSystem))
             return false;
 
         var roleProto = jobSystem.GetJobPrototype(proto);
-
-        if (jobSystem.TryGetDepartment(roleProto, out var departmentProto))
-            departmentColor = departmentProto.Color;
-
         RolePrototype? indexedRole;
 
         if (protoManager.TryIndex<JobPrototype>(roleProto, out var indexedJob))
@@ -56,6 +52,11 @@ public sealed partial class RoleTimeRequirement : JobRequirement
             indexedRole = indexedAntag;
         else
             return false;
+
+        if (indexedRole.Color is not null)
+            roleColor = indexedRole.Color.Value;
+        else if (jobSystem.TryGetDepartment(roleProto, out var departmentProto))
+            roleColor = departmentProto.Color;
 
         if (!Inverted)
         {
@@ -66,7 +67,7 @@ public sealed partial class RoleTimeRequirement : JobRequirement
                 "role-timer-role-insufficient",
                 ("time", formattedRoleDiff),
                 ("job", indexedRole.LocalizedName),
-                ("departmentColor", departmentColor.ToHex())));
+                ("departmentColor", roleColor.ToHex())));
             return false;
         }
 
@@ -76,7 +77,7 @@ public sealed partial class RoleTimeRequirement : JobRequirement
                 "role-timer-role-too-high",
                 ("time", formattedRoleDiff),
                 ("job", indexedRole.LocalizedName),
-                ("departmentColor", departmentColor.ToHex())));
+                ("departmentColor", roleColor.ToHex())));
             return false;
         }
 
